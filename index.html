@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- The test site is on a public URL by necessity (GitHub Pages), but it's for invited
+       participants only — keep it out of search engines. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MIMS Menu Navigation</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23007cc4'/%3E%3Cpath d='M5 17V7l3.5 6L12 7l3.5 6L19 7v10' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <!-- Microsoft Clarity — the landing records too, so the whole session (pick → prototype)
+       is one story.  is substituted by test/build.sh. -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "");
+  </script>
+  <style>
+    /* Product-adjacent, deliberately minimal: the app's font stack, MIMS blue, the same
+       #fafafa page ground and 8px topstrip gradient. No style names anywhere — the three
+       prototypes are only ever "A", "B", "C" so nothing primes what a tester will judge. */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fafafa;
+      color: rgba(0, 0, 0, .87);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .topstrip { height: 8px; background: linear-gradient(90deg, #007cc4, #74abe3); }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .06);
+      padding: 40px;
+      width: 100%;
+      max-width: 460px;
+    }
+    h1 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+    .sub { margin-top: 8px; font-size: 14px; line-height: 1.5; color: rgba(0, 0, 0, .60); }
+    label { display: block; margin-top: 28px; font-size: 13px; font-weight: 600; }
+    input {
+      margin-top: 8px;
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      font: inherit;
+      font-size: 14px;
+      color: inherit;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .22);
+      border-radius: 6px;
+      outline: none;
+    }
+    input:focus { border-color: #007cc4; box-shadow: 0 0 0 3px rgba(0, 124, 196, .15); }
+    input[aria-invalid="true"] { border-color: #c62828; }
+    .err { display: none; margin-top: 6px; font-size: 13px; color: #c62828; }
+    .err[data-show] { display: block; }
+    .protos { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; }
+    .proto {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: border-color .12s, background .12s;
+    }
+    .proto:hover, .proto:focus-visible {
+      border-color: #007cc4;
+      background: rgba(0, 124, 196, .05);
+      outline: none;
+    }
+    .proto .badge {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      background: #007cc4;
+      color: #fff;
+      font-size: 16px;
+      flex: none;
+    }
+    .proto .chev { margin-left: auto; color: rgba(0, 0, 0, .38); }
+    .foot { margin-top: 28px; font-size: 12px; color: rgba(0, 0, 0, .45); line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="topstrip"></div>
+  <main>
+    <div class="card">
+      <h1>MIMS Menu Navigation</h1>
+      <p class="sub">Thanks for helping us test! Enter your name, then open the prototype the
+        survey asks for. You can come back here for the next one.</p>
+
+      <label for="pname">Your name</label>
+      <input id="pname" type="text" autocomplete="name" placeholder="First and last name" />
+      <p class="err" id="perr">Please enter your name first — it lets us match your session to your survey answers.</p>
+
+      <!-- D/E/F, not A/B/C: those letters already mean the July round's prototypes and
+           the internal variant names (Max, 31 Aug). -->
+      <div class="protos">
+        <a class="proto" href="./d/" data-proto="D">
+          <span class="badge">D</span> Prototype D
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a class="proto" href="./e/" data-proto="E">
+          <span class="badge">E</span> Prototype E
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a class="proto" href="./f/" data-proto="F">
+          <span class="badge">F</span> Prototype F
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+
+      <p class="foot">The prototype uses example data only. Keep the survey open in another
+        tab or window while you work through it.</p>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var input = document.getElementById('pname');
+      var err = document.getElementById('perr');
+
+      /* Returning participant: prefill so moving between prototypes costs nothing. */
+      try {
+        var saved = localStorage.getItem('test.participant');
+        if (saved) input.value = saved;
+      } catch (e) { /* storage unavailable — the gate below degrades to a plain link */ }
+
+      input.addEventListener('input', function () {
+        input.removeAttribute('aria-invalid');
+        err.removeAttribute('data-show');
+      });
+
+      /* "Storage reset entry route" (docs/estimates.md): every start through this page
+         wipes the prototype's own state — pins, recents, sidebar preference, warehouse,
+         tool-card minimize flags and any stale nav.variant — so no participant inherits
+         the previous one's shortcuts. Only the participant name survives. */
+      function wipePrototypeState() {
+        try {
+          var doomed = [];
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && (k.indexOf('nav.') === 0 || k === 'mims.sidebar')) doomed.push(k);
+          }
+          doomed.forEach(function (k) { localStorage.removeItem(k); });
+        } catch (e) { /* storage unavailable — nothing to wipe either */ }
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('.proto'), function (a) {
+        a.addEventListener('click', function (ev) {
+          var name = input.value.trim();
+          if (!name) {
+            ev.preventDefault();
+            input.setAttribute('aria-invalid', 'true');
+            err.setAttribute('data-show', '');
+            input.focus();
+            return;
+          }
+          /* Synchronous writes land before the navigation the anchor then performs. */
+          try { localStorage.setItem('test.participant', name); } catch (e) { /* degrade */ }
+          wipePrototypeState();
+          if (window.clarity) {
+            window.clarity('identify', name);
+            window.clarity('set', 'participant', name);
+            window.clarity('set', 'variant', a.getAttribute('data-proto'));
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
