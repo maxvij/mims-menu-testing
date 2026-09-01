@@ -6,6 +6,11 @@
   <!-- The test site is on a public URL by necessity (GitHub Pages), but it's for invited
        participants only — keep it out of search engines. -->
   <meta name="robots" content="noindex, nofollow" />
+  <!-- Same Inter load as the app (app/index.html) — the landing must not swap typefaces
+       against the prototypes it opens. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
   <title>MIMS Menu Navigation</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23007cc4'/%3E%3Cpath d='M5 17V7l3.5 6L12 7l3.5 6L19 7v10' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <!-- Microsoft Clarity — the landing records too, so the whole session (pick → prototype)

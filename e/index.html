@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- --font leads with "Inter" but nothing loaded it, so the face depended on whether
+         the VIEWER's machine happened to have Inter installed — a per-machine font lottery
+         that surfaced as "the nav font looks different" in the hosted usability test
+         (Max, 1 Sep). Loaded here for every build; the stack's system fallbacks cover
+         offline use of the share file. The share build's single-file plugin inlines only
+         ./assets stylesheets, so this external link survives it — mind that if the regex
+         there is ever touched. Weights match the --fw-* tokens (400/500/600/700). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
     <title>MIMS</title>
-    <script type="module" crossorigin src="./assets/index-CaQxcf0w.js"></script>
+    <script type="module" crossorigin src="./assets/index-Dd2qwFx-.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/style-OX_kWY6q.css">
     <meta name="robots" content="noindex, nofollow" />
   <script>
